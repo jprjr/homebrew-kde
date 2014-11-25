@@ -2,8 +2,8 @@ require File.join(File.dirname(__FILE__), 'base_kde_formula')
 
 class Kdelibs < BaseKdeFormula
   homepage 'http://www.kde.org/'
-  url 'http://download.kde.org/stable/4.13.0/src/kdelibs-4.13.0.tar.xz'
-  sha1 '8f2cccbadc869a7c5e7371d45ce2a767b98a9f6a'
+  url 'http://download.kde.org/stable/4.14.0/src/kdelibs-4.14.0.tar.xz'
+  sha1 'd8c56abfa101b0bd39e05ae36b7f6063d8fe360c'
 
   kde_build_deps
   depends_on 'gettext'
@@ -20,7 +20,7 @@ class Kdelibs < BaseKdeFormula
   depends_on 'docbook'
   depends_on 'docbook-xsl'
   depends_on 'd-bus'
-  depends_on 'qt'
+  depends_on 'qt' => ["with-d-bus", "with-qt3support"]
   depends_on 'libdbusmenu-qt'
   depends_on 'aspell' => :optional
   depends_on 'enchant' => :optional
@@ -32,8 +32,6 @@ class Kdelibs < BaseKdeFormula
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/default-kde4-xdg-menu-prefix.patch",
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/workaround-kdeinit4-crash.patch",
       "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindKDE4-Internal.cmake.diff",
-      "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindPhonon.cmake.diff",
-      "http://svn.macports.org/repository/macports/trunk/dports/kde/kdelibs4/files/patch-cmake-modules-FindQt4.cmake.diff",
       "https://gist.githubusercontent.com/philacs/9297176/raw/08f340d94a91398507ad82a8af6227cc68f0ea29/kaboutdialog-osx-beautifier-kdelibs.diff"
     ]}
   end
