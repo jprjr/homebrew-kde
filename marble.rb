@@ -12,7 +12,7 @@ class Marble < BaseKdeFormula
 
   def extra_cmake_args
     # Prevent 'marble-qt.app' from being installed in '/usr/local'
-    "-DCMAKE_INSTALL_PREFIX=#{prefix}"
+    "-DCMAKE_INSTALL_PREFIX=#{kdedir}"
   end
 
   kde_build_deps
