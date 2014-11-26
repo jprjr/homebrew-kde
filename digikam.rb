@@ -2,8 +2,8 @@ require File.join(File.dirname(__FILE__), 'base_kde_formula')
 
 class Digikam < BaseKdeFormula
   homepage 'http://www.digikam.org/'
-  url "http://download.kde.org/stable/digikam/digikam-4.1.0.tar.bz2"
-  sha1 "b2cd7acca4e9b4d7924a5c5f76009846b8b3b6e0"
+  url 'http://download.kde.org/stable/digikam/digikam-4.4.0.tar.bz2'
+  sha1 '1feb43120addda314e09761440ec2058e430171c'
 
   # Ref: https://trac.macports.org/browser/trunk/dports/kde/digikam/Portfile
   # Digikam and kipi-plugins dependencies
@@ -54,15 +54,17 @@ class Digikam < BaseKdeFormula
   def patches
     # Build fails with 'Unknown CMake command "FLEX_TARGET".'
     # Suspect missing 'hugin' package. Disable panorama plugin for now:
-    {:p0 => 'https://gist.github.com/tlvince/8004513/raw/b61f7213d56058e7d97f00c0bfbf9701eea03aac/disable-panorama.diff'}
+    {:p0 => 'https://gist.githubusercontent.com/jprjr/c77c1d51a73eaadaec6f/raw/ea43e9c8bb0e6f393c450710e51cd08d8fafed19/disable-panoaram-digikam-4.4.0.diff'}
   end
 
   def extra_cmake_args
     [
+      '-DDIGIKAMSC_USE_PRIVATE_SHAREDLIBS=on',
       '-DDIGIKAMSC_USE_PRIVATE_KDEGRAPHICS=on',
       '-DDIGIKAMSC_COMPILE_DOC=off'
     ]
   end
+
 
   kde_build_deps
 end

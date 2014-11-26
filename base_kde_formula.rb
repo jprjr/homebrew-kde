@@ -78,6 +78,7 @@ class BaseKdeFormula < Formula
   def default_install
     ENV.x11
     ENV['MAKEFLAGS'] = "-j4"
+    ENV.append_path "PKG_CONFIG_PATH", "#{kdedir}/lib/pkgconfig"
     mkdir 'build'
     cd 'build'
     system "cmake", *kde_default_cmake_args
